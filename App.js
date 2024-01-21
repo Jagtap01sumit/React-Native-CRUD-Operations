@@ -5,6 +5,7 @@ import {
   ScrollView,
   StyleSheet,
   Text,
+  TextInput,
   Touchable,
   TouchableOpacity,
   View,
@@ -16,10 +17,19 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [modelUser, setModelUser] = useState(false);
 
+  const [image, setImage] = useState('');
+  const [firstName, setfirstName] = useState('');
+  const [lastName, setlastName] = useState('');
+  const [gender, setGender] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
+  const [userId, setUserId] = useState(null);
+
   useEffect(() => {
-    getListTeacher();
+    getListUser();
   }, []);
-  const getListTeacher = () => {
+  const getListUser = () => {
     fetch('http://192.168.0.103:8000/users', {
       method: 'GET',
     })
@@ -46,7 +56,7 @@ export default function App() {
       })
       .then(() => {
         console.log('User deleted successfully');
-        getListTeacher();
+        getListUser();
       })
       .catch(err => {
         console.log('Error deleting user:', err.message);
@@ -61,20 +71,203 @@ export default function App() {
   const handleCloseModal = () => {
     setModelUser(false);
   };
+  // const handleSave = () => {
+  //   if (id === null) {
+  //     fetch(`http://192.168.0.103:8000/users`, {
+  //       method: 'POST',
+  //       body: JSON.stringify({
+  //         username: username,
+  //         firstName: firstName,
+  //         lastName: lastName,
+  //         gender: gender,
+  //         phone: phone,
+  //         image: image,
+  //         email: email, // Include this line if email is required
+  //       }),
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //     })
+  //       .then(res => {
+  //         if (!res.ok) {
+  //           throw new Error('Failed to create user');
+  //         }
+  //         return res.json();
+  //       })
+  //       .then(() => {
+  //         console.log('User created successfully');
+  //         resetDate();
+  //         getListUser();
+  //         setModelUser(false);
+  //       })
+  //       .catch(err => {
+  //         console.log('Error create user:', err.message);
+  //       })
+  //       .finally(() => {
+  //         setLoading(false);
+  //       });
+  //   } else {
+  //     fetch(`http://192.168.0.103:8000/users/`, {
+  //       method: 'PUT',
+  //       body: JSON.stringify({
+  //         id: id,
+  //         username: username,
+  //         firstName: firstName,
+  //         lastName: lastName,
+  //         gender: gender,
+  //         phone: phone,
+  //         image: image,
+  //         email: email,
+  //       }),
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //     })
+  //       .then(res => {
+  //         if (!res.ok) {
+  //           throw new Error('Failed to edit user');
+  //         }
+  //         return res.json();
+  //       })
+  //       .then(() => {
+  //         console.log('User edit successfully');
+  //         resetDate();
+  //         getListUser();
+  //         setModelUser(false);
+  //       })
+  //       .catch(err => {
+  //         console.log('Error edit user:', err.message);
+  //       })
+  //       .finally(() => {
+  //         setLoading(false);
+  //       });
+  //   }
+  // };
+  const handleSave = () => {
+    fetch(`http://192.168.0.103:8000/users`, {
+      method: 'POST',
+      body: JSON.stringify({
+        username: username,
+        firstName: firstName,
+        lastName: lastName,
+        gender: gender,
+        phone: phone,
+        image: image,
+        email: email, // Include this line if email is required
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('Failed to create user');
+        }
+        return res.json();
+      })
+      .then(() => {
+        console.log('User created successfully');
+        resetDate();
+        getListUser();
+        setModelUser(false);
+      })
+      .catch(err => {
+        console.log('Error create user:', err.message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+  const resetDate = () => {
+    setEmail(''),
+      setGender(''),
+      setImage(''),
+      setfirstName(''),
+      setlastName(''),
+      setPhone(''),
+      setUsername('');
+    setUserId(null);
+  };
+  const handleEdit = item => {
+    setUserId(item.userId);
+    console.log(item.userId);
+    setEmail(item.email),
+      setGender(item.gender),
+      setImage(item.image),
+      setfirstName(item.firstName),
+      setlastName(item.lastName),
+      setPhone(item.phone),
+      setUsername(item.username);
+    setModelUser(true);
+  };
   return (
     <SafeAreaView style={styles.container}>
       <Modal visible={modelUser}>
         <SafeAreaView>
           <View style={styles.head}>
-            <Text>Add New User</Text>
-            <TouchableOpacity onPress={handleCloseModal}>
-              <Text>Close</Text>
+            <Text style={styles.txtMain}>Add New User</Text>
+            <TouchableOpacity style={{padding: 10}} onPress={handleCloseModal}>
+              <Text style={{fontWeight: 'bold'}}>Close</Text>
             </TouchableOpacity>
           </View>
-
-          <Text>TestModel</Text>
-          <Text>TestModel</Text>
-          <Text>TestModel</Text>
+          <View
+            style={{
+              marginHorizontal: 10,
+              backgroundColor: '#21788D',
+            }}>
+            <Text style={styles.inputTitle}>Profile Picture Link</Text>
+            <TextInput
+              style={styles.textInput}
+              placeholder="https://...."
+              value={image}
+              onChangeText={text => setImage(text)}
+            />
+            <Text style={styles.inputTitle}>First Name</Text>
+            <TextInput
+              style={styles.textInput}
+              placeholder="Ex. sumit"
+              value={firstName}
+              onChangeText={text => setfirstName(text)}
+            />
+            <Text style={styles.inputTitle}>Last Name</Text>
+            <TextInput
+              style={styles.textInput}
+              placeholder="lastName"
+              value={lastName}
+              onChangeText={text => setlastName(text)}
+            />
+            <Text style={styles.inputTitle}>Gender</Text>
+            <TextInput
+              style={styles.textInput}
+              placeholder="Male or Female"
+              value={gender}
+              onChangeText={text => setGender(text)}
+            />
+            <Text style={styles.inputTitle}>Phone</Text>
+            <TextInput
+              style={styles.textInput}
+              placeholder="phone number"
+              value={phone}
+              onChangeText={text => setPhone(text)}
+            />
+            <Text style={styles.inputTitle}>Email</Text>
+            <TextInput
+              style={styles.textInput}
+              placeholder="Email"
+              value={email}
+              onChangeText={text => setEmail(text)}
+            />
+            <Text style={styles.inputTitle}>Username</Text>
+            <TextInput
+              style={styles.textInput}
+              placeholder="Username"
+              value={username}
+              onChangeText={text => setUsername(text)}
+            />
+            <TouchableOpacity style={styles.btnContainer} onPress={handleSave}>
+              <Text style={{fontWeight: 'bold'}}>Save</Text>
+            </TouchableOpacity>
+          </View>
         </SafeAreaView>
       </Modal>
 
@@ -108,6 +301,12 @@ export default function App() {
                   onPress={() => handleRemove(item)}
                   disabled={loading}>
                   <Text style={styles.txtDelete}>Delete</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.Btn}
+                  onPress={() => handleEdit(item)}
+                  disabled={loading}>
+                  <Text>Edit</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -169,10 +368,9 @@ const styles = StyleSheet.create({
   txtDelete: {
     color: '#FF0000',
   },
+
   Btn: {
     margin: 10,
-    // padding: 3,
-    // paddingHorizontal: 8,
   },
   rowBetween: {
     flexDirection: 'row',
@@ -180,5 +378,29 @@ const styles = StyleSheet.create({
     marginBottom: 6,
     backgroundColor: '#21788D',
     borderRadius: 14,
+  },
+  textClose: {
+    color: 'gray',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  textInput: {
+    borderWidth: 1,
+    borderColor: '#888',
+
+    marginHorizontal: 10,
+    marginBottom: 10,
+    color: '#000000',
+    backgroundColor: '#c8dadb',
+    fontSize: 24,
+  },
+  inputTitle: {
+    marginLeft: 10,
+  },
+  btnContainer: {
+    borderWidth: 1,
+    padding: 10,
+    borderColor: 'green',
+    backgroundColor: 'green',
   },
 });
