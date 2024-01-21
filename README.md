@@ -52,6 +52,8 @@ This is one way to run your app — you can also run it directly from within And
 1. create a db.json file to save json data
 2. npm i json-server
 3. json-server --watch db.json --port 8000 --host YOUR_DEVICE_IP_ADDRESS
+4. #make sure both devices( mobile and pc connected the same network)
+   
                                      
                                                                        
 
