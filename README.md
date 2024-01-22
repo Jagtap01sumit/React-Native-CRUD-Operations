@@ -70,21 +70,24 @@ Now that you have successfully run the app, let's modify it.
 
 You've successfully run and modified your React Native App. :partying_face:
 
-### Now what?
+#OUTPUT
+User List
+![Screenshot_20240122_141903_CRUDOperation](https://github.com/Jagtap01sumit/React-Native-CRUD-Operations/assets/109575992/95022c97-b91b-4935-b1e3-0604c416688a) 
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+Add new User
+![Screenshot_20240122_142052_CRUDOperation](https://github.com/Jagtap01sumit/React-Native-CRUD-Operations/assets/109575992/5f6f92bf-ce36-45d4-9d0c-ff9c0281a376)
 
-# Troubleshooting
+Delete User
+![Screenshot_20240122_141911_CRUDOperation](https://github.com/Jagtap01sumit/React-Native-CRUD-Operations/assets/109575992/409a7368-cb08-4ca6-a75d-af215146d72e)
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+Update User Data
+![Screenshot_20240122_142116_CRUDOperation](https://github.com/Jagtap01sumit/React-Native-CRUD-Operations/assets/109575992/4c85fc45-5a8f-48cf-b189-355859073755)
 
-# Learn More
 
-To learn more about React Native, take a look at the following resources:
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+
+
+
+
+
+
