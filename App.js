@@ -24,25 +24,24 @@ export default function App() {
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
-  const [userId, setUserId] = useState(null);
+  const [user_Id, setuser_Id] = useState(null);
 
   useEffect(() => {
     getListUser();
   }, []);
   const getListUser = () => {
-    fetch('http://192.168.0.103:8000/users', {
+    fetch(`http://192.168.0.103:8000/users`, {
       method: 'GET',
     })
       .then(res => res.json())
       .then(res => {
         setList(res);
-        // console.log(res);
       })
       .catch(err => {
         console.log(err);
       });
   };
-  // 192.168.0.103
+
   const handleRemove = item => {
     setLoading(true);
     fetch(`http://192.168.0.103:8000/users/${item.id}`, {
@@ -55,6 +54,7 @@ export default function App() {
         return res.json();
       })
       .then(() => {
+        alert(`${item.id} Deleted successfully `);
         console.log('User deleted successfully');
         getListUser();
       })
@@ -153,7 +153,7 @@ export default function App() {
         gender: gender,
         phone: phone,
         image: image,
-        email: email, // Include this line if email is required
+        email: email,
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -186,11 +186,11 @@ export default function App() {
       setlastName(''),
       setPhone(''),
       setUsername('');
-    setUserId(null);
+    setuser_Id(null);
   };
   const handleEdit = item => {
-    setUserId(item.userId);
-    console.log(item.userId);
+    setuser_Id(item.user_Id);
+    console.log(item.user_Id);
     setEmail(item.email),
       setGender(item.gender),
       setImage(item.image),
@@ -205,7 +205,11 @@ export default function App() {
       <Modal visible={modelUser}>
         <SafeAreaView>
           <View style={styles.head}>
-            <Text style={styles.txtMain}>Add New User</Text>
+            {user_Id === null ? (
+              <Text style={styles.txtMain}>Add New Userr</Text>
+            ) : (
+              <Text style={styles.txtMain}>Update Userr</Text>
+            )}
             <TouchableOpacity style={{padding: 10}} onPress={handleCloseModal}>
               <Text style={{fontWeight: 'bold'}}>Close</Text>
             </TouchableOpacity>
@@ -264,10 +268,13 @@ export default function App() {
               value={username}
               onChangeText={text => setUsername(text)}
             />
-            <TouchableOpacity style={styles.btnContainer} onPress={handleSave}>
-              <Text style={{fontWeight: 'bold'}}>Save</Text>
-            </TouchableOpacity>
           </View>
+          <TouchableOpacity style={styles.btnContainer} onPress={handleSave}>
+            <Text
+              style={{fontWeight: 'bold', margin: 10, paddingHorizontal: 10}}>
+              Save
+            </Text>
+          </TouchableOpacity>
         </SafeAreaView>
       </Modal>
 
@@ -350,8 +357,6 @@ const styles = StyleSheet.create({
     borderRadius: 14,
     alignItems: 'center',
 
-    // borderWidth: 1,
-
     padding: 9,
   },
   itemContent: {
@@ -399,8 +404,11 @@ const styles = StyleSheet.create({
   },
   btnContainer: {
     borderWidth: 1,
-    padding: 10,
+
     borderColor: 'green',
     backgroundColor: 'green',
+    margin: 10,
+    paddingHorizontal: 10,
+    alignItems: 'center',
   },
 });

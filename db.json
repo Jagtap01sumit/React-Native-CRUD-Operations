@@ -1,42 +1,6 @@
 {
   "users": [
     {
-      "id": "1",
-      "firstName": "Ewell",
-      "lastName": "Mueller",
-      "maidenName": "Durgan",
-      "age": 29,
-      "gender": "male",
-      "email": "ggude7@chron.com",
-      "phone": "+86 946 297 2275",
-      "username": "ggude7",
-      "image": "https://robohash.org/Terry.png?set=set4"
-    },
-    {
-      "id": "2",
-      "firstName": "Demetrius",
-      "lastName": "Corkery",
-      "maidenName": "Gleason",
-      "age": 22,
-      "gender": "male",
-      "email": "nloiterton8@aol.com",
-      "phone": "+86 356 590 9727",
-      "username": "nloiterton8",
-      "image": "https://robohash.org/Sheldon.png?set=set4"
-    },
-    {
-      "id": "3",
-      "firstName": "Demetrius",
-      "lastName": "Corkery",
-      "maidenName": "Gleason",
-      "age": 22,
-      "gender": "male",
-      "email": "nloiterton8@aol.com",
-      "phone": "+86 356 590 9727",
-      "username": "nloiterton8",
-      "image": "https://robohash.org/Mavis.png?set=set4"
-    },
-    {
       "id": "5",
       "firstName": "Demetrius",
       "lastName": "Corkery",
@@ -71,27 +35,29 @@
       "email": "jagtap@gmail.com"
     },
     {
-      "id": "aa47",
-      "username": "test@gmail.com",
-      "firstName": "Sumit",
-      "lastName": "jagtap",
+      "id": "f1d5",
+      "username": "nloiterton8",
+      "firstName": "Demetrius",
+      "lastName": "Corkery",
       "gender": "male",
-      "phone": "913737993",
-      "image": "https://robohash.org/Ewell.png?set=set4",
-      "email": "jagtap@gmail.com"
+      "phone": "+86 356 590 9727",
+      "image": "https://robohash.org/Sheldon.png?set=set4",
+      "email": "nloiterton8@aol.com"
     },
     {
-      "id": "dd2e",
-      "username": "test@gmail.com",
-      "firstName": "Sumit",
-      "lastName": "jagtap",
+      "id": "12",
+      "firstName": "Ewell",
+      "lastName": "Mueller",
+      "maidenName": "Durgan",
+      "age": 29,
       "gender": "male",
-      "phone": "913737993",
-      "image": "https://robohash.org/Ewell.png?set=set4",
-      "email": "jagtap@gmail.com"
+      "email": "ggude7@chron.com",
+      "phone": "+86 946 297 2275",
+      "username": "ggude7",
+      "image": "https://robohash.org/Terry.png?set=set4"
     },
     {
-      "id": "88de",
+      "id": "0457",
       "username": "nloiterton8",
       "firstName": "Demetrius",
       "lastName": "Corkery",

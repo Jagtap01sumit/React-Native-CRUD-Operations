@@ -10,6 +10,9 @@
     "test": "jest"
   },
   "dependencies": {
+    "@react-native-community/cli": "^12.3.3",
+    "@react-native-community/cli-platform-android": "^12.3.3",
+    "@react-native-community/cli-platform-ios": "^12.3.3",
     "react": "18.2.0",
     "react-native": "0.73.2",
     "react-native-config": "^1.5.1"
